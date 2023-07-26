@@ -9,25 +9,25 @@ public  class Tour : BaseEntity<int>
     /// <summary>
     /// Name of the Song
     /// </summary>
-    public string TourName { get; set; } = "";
-
+    public string Name { get; set; } = "";
+    
     /// <summary>
-    /// Tour city
+    /// City name
     /// </summary>
     public string City { get; set; } = "";
 
     /// <summary>
-    /// Tour Date in the city
-    /// </summary>
-    public DateTime Date { get; set; }
-
-    /// <summary>
-    /// Is the Tour in that city sold out?
+    /// Is the tour SoldOut?
     /// </summary>
     public bool IsSoldOut { get; set; } = false;
     
     /// <summary>
-    /// The <see cref="Artist"/> id this Album belongs to
+    /// Tour Date in the city
+    /// </summary>
+    public DateTime Date { get; set; }
+    
+    /// <summary>
+    /// The <see cref="Artist"/> id this Tour belongs to
     /// </summary>
     /// <value></value>
     [ForeignKey("Id")]
