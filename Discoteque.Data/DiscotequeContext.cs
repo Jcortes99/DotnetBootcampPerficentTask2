@@ -25,6 +25,8 @@ public class DiscotequeContext : DbContext
 
         builder.Entity<Artist>().ToTable("Artist").HasKey(k => k.Id);
         builder.Entity<Album>().ToTable("Album").HasKey(k => k.Id);
+        builder.Entity<Song>().ToTable("Song").HasKey(k => k.Id);
+        builder.Entity<Tour>().ToTable("Tour").HasKey(k => k.Id);
         base.OnModelCreating(builder);
     }
 }

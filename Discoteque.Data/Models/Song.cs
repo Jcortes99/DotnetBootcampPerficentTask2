@@ -14,15 +14,14 @@ public  class Song : BaseEntity<int>
     /// <summary>
     /// Song duration
     /// </summary>
-    public int Duration { get; set; } = 0
+    public int Duration { get; set; } = 0;
     
     /// <summary>
     /// The <see cref="Album"/> id this Song belongs to
     /// </summary>
     /// <value></value>
-    [ForeignKey("Id")]
+    [ForeignKey("Album")]
     public int AlbumId { get; set; }
-
     /// <summary>
     /// The <see cref="Album"/> Entity this album is refering to
     /// </summary> <summary>

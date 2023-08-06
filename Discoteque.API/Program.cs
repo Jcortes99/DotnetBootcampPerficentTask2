@@ -23,10 +23,11 @@ builder.Services.AddDbContext<DiscotequeContext>(
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IArtistsService, ArtistsService>();
 builder.Services.AddScoped<IAlbumService, AlbumService>();
+builder.Services.AddScoped<ISongService, SongService>();
+builder.Services.AddScoped<ITourService, TourService>();
 
 var app = builder.Build();
 PopulateDb(app);
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -43,7 +44,6 @@ app.MapControllers();
 
 app.Run();
 
-
 #region  DB Population
 /// <summary>
 /// Populate teh Database with some data.
@@ -55,6 +55,7 @@ async void PopulateDb(WebApplication app)
     {
         var artistService = scope.ServiceProvider.GetRequiredService<IArtistsService>();
         var albumService = scope.ServiceProvider.GetRequiredService<IAlbumService>();
+        var songservice = scope.ServiceProvider.GetRequiredService<ISongService>();
 
         // Artists
         await artistService.CreateArtist(new Discoteque.Data.Models.Artist{
@@ -514,6 +515,12 @@ async void PopulateDb(WebApplication app)
             Genre = Discoteque.Data.Models.Genres.Urban
         });
         #endregion
+
+        await songservice.CreateSong(new Discoteque.Data.Models.Song{
+            Name = "test1",
+            AlbumId = 1,
+            Duration = 10
+        });
     }
 }
 #endregion
